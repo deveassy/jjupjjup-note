@@ -1,11 +1,18 @@
-import React, { useState, useEffect, useMemo } from "react";
+import React, { useState, useEffect } from "react";
+import { Header, Container, Wrapper, Form } from "../styles/styles";
+import Steps from "../components/steps";
 
 function Certification() {
   const [text, setText] = useState<string>("");
-  const [disable, setDisable] = useState(false); // 버튼활성화 유무
+  const [value, setValue] = useState<string | null>("");
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setText(e.target.value);
+  };
+
+  const handleClick = () => {
+    localStorage.setItem("jjupjjup-user-name", text);
+    setText("");
   };
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
@@ -15,28 +22,34 @@ function Certification() {
     setText("");
   };
 
-  // TODO: localStorage에 값이 있을 경우엔 버튼 비활성화시키기
-  // useEffect(() => {
-  //   if (localStorage.getItem("jjupjjup-user-name")?.length || !!text)
-  //     return setDisable(true);
-  // }, [text, disable]);
+  useEffect(() => {
+    const storageValue = localStorage.getItem("jjupjjup-user-name");
+
+    setValue(storageValue);
+  }, []);
 
   return (
-    <div>
-      <div>
-        <h2>HELLO</h2>
-        <p>모임에 참석하시겠습니까?</p>
-        <form onSubmit={handleSubmit}>
-          <input
-            type="text"
-            placeholder="이름을 입력해주세요"
-            value={text}
-            onChange={handleChange}
-          />
-          <input type="button" value="참석하기" disabled={!disable} />
-        </form>
-      </div>
-    </div>
+    <Container>
+      <h1>JJUPJJUP-NOTE</h1>
+      {!!value?.length ? (
+        <Steps />
+      ) : (
+        <Wrapper>
+          <Header>HELLO</Header>
+          <p>모임에 참석하시겠습니까?</p>
+          <Form onSubmit={handleSubmit}>
+            <input
+              type="text"
+              placeholder="이름을 입력해주세요"
+              value={text}
+              onChange={handleChange}
+            />
+            {!!text.length && <p>[ {text} ]로</p>}
+            <input type="button" value="참석하기" onClick={handleClick} />
+          </Form>
+        </Wrapper>
+      )}
+    </Container>
   );
 }
 
