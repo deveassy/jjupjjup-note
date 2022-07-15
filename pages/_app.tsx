@@ -3,6 +3,12 @@ import { AppProps } from "next/app";
 import Header from "../components/header";
 import { useEffect, useState } from "react";
 
+declare global {
+  interface Window {
+    kakao: any;
+  }
+}
+
 function MyApp({ Component, pageProps }: AppProps) {
   const [name, setName] = useState<string | null>("");
   const [flag, setFlag] = useState<string | null>("");
