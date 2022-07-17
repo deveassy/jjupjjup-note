@@ -8,18 +8,10 @@ function Header() {
     <Container>
       <h1 className={styles.title}>JJUPJJUP-NOTE</h1>
       <NavWrapper>
-        <Link href="/member">
-          <a>Member</a>
-        </Link>
-        <Link href="/calendar">
-          <a>Calendar</a>
-        </Link>
-        <Link href="/memory">
-          <a>Memory</a>
-        </Link>
-        <Link href="/mukPlace">
-          <a>Muk-place</a>
-        </Link>
+        <Link href="/member">Member</Link>
+        <Link href="/calendar">Calendar</Link>
+        <Link href="/memory">Memory</Link>
+        <Link href="/mukPlace">Muk-place</Link>
       </NavWrapper>
     </Container>
   );
