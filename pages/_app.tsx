@@ -1,7 +1,8 @@
 import "../styles/globals.css";
+import { useEffect, useState } from "react";
 import { AppProps } from "next/app";
 import Header from "../components/header";
-import { useEffect, useState } from "react";
+import { RecoilRoot } from "recoil";
 
 declare global {
   interface Window {
@@ -22,10 +23,10 @@ function MyApp({ Component, pageProps }: AppProps) {
   }, []);
 
   return (
-    <>
+    <RecoilRoot>
       {!!name && !!flag && <Header />}
       <Component {...pageProps} />
-    </>
+    </RecoilRoot>
   );
 }
 
