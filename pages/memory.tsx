@@ -1,14 +1,38 @@
-import Link from "next/link";
+import { Container } from "../styles/styles";
+import { useState, useRef } from "react";
+import styled from "styled-components";
 
 function Memory() {
+  const fileRef = useRef<HTMLInputElement>();
+  const [file, setFile] = useState();
+
+  const handleUpload = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setFile(e.target.value);
+  };
   return (
-    <div>
+    <Container>
       <h1>Memory page</h1>
-      <Link href="/">
-        <a>back</a>
-      </Link>
-    </div>
+      <UploadButton>
+        Upload
+        <input
+          type="file"
+          // ref={fileRef}
+          accept="image/*"
+          onChange={handleUpload}
+          style={{ display: "none" }}
+        />
+      </UploadButton>
+      <h3>{file}</h3>
+    </Container>
   );
 }
 
 export default Memory;
+
+const UploadButton = styled.label`
+  padding: 5px 10px;
+  background-color: yellowgreen;
+  color: #fff;
+  border-radius: 5px;
+  cursor: pointer;
+`;
