@@ -6,7 +6,11 @@ import { Container } from "../../styles/styles";
 function Header() {
   return (
     <Container>
-      <h1 className={styles.title}>JJUPJJUP-NOTE</h1>
+      <Link href="/">
+        <a className={styles.title}>
+          <h1>JJUPJJUP-NOTE</h1>
+        </a>
+      </Link>
       <NavWrapper>
         <Link href="/member">Member</Link>
         <Link href="/calendar">Calendar</Link>
