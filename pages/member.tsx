@@ -1,31 +1,38 @@
-import Link from "next/link";
 import { Container } from "../styles/styles";
 import styled from "styled-components";
 
 const memberInfo = [
   {
     id: 1,
-    name: "MEANING",
+    name: "MEAING",
     mbti: "ESFP",
-    img: "",
+    img: "/img/mean.png",
+    sns: "https://instagram.com/_meaneee?igshid=YmMyMTA2M2Y=",
+    etc: "",
   },
   {
     id: 2,
     name: "DORI",
     mbti: "ESFJ",
-    img: "",
+    img: "/img/dori.png",
+    sns: "https://instagram.com/iameundori?igshid=YmMyMTA2M2Y=",
+    etc: "https://blog.naver.com/dmsthf116",
   },
   {
     id: 3,
     name: "EASSY",
     mbti: "INFJ",
-    img: "",
+    img: "/img/eassy.png",
+    sns: "https://instagram.com/eassy_v?igshid=YmMyMTA2M2Y=",
+    etc: "https://velog.io/@eassy",
   },
   {
     id: 4,
-    name: "JUDY",
+    name: "ZUDY",
     mbti: "ISTJ",
-    img: "",
+    img: "/img/zudy.png",
+    sns: "https://instagram.com/wjstmdwn?igshid=YmMyMTA2M2Y=",
+    etc: "https://youtube.com/channel/UC22sz9AhyjpOHh1PEwMSEHA",
   },
 ];
 
@@ -36,15 +43,14 @@ function Member() {
       <CardContainer>
         {memberInfo.map((item) => (
           <CardWrapper key={item.id}>
-            <Img />
+            <Img src={item.img} alt={`member-${item.img}`} />
             <h2>{item.name}</h2>
             <h3>{item.mbti}</h3>
+            <a href={item.sns}>인스타</a>
+            <a href={item.etc}>기타</a>
           </CardWrapper>
         ))}
       </CardContainer>
-      <Link href="/">
-        <a>back</a>
-      </Link>
     </Container>
   );
 }
@@ -67,9 +73,7 @@ const CardWrapper = styled.div`
   border: 2px solid #888;
 `;
 
-const Img = styled.div`
+const Img = styled.img`
   width: 200px;
   height: 200px;
-  border: 1px solid #000;
-  border-radius: 50%;
 `;
