@@ -1,9 +1,8 @@
 import React, { useState } from "react";
-import { Wrapper, Form } from "../../styles/styles";
-import styled from "styled-components";
 import { useRouter } from "next/router";
 import { useRecoilState } from "recoil";
 import { questionArr } from "../../recoil/atom";
+import * as S from "./styles";
 
 function Steps() {
   const [step, setStep] = useState<number>(0);
@@ -43,25 +42,21 @@ function Steps() {
     setText("");
   };
   return (
-    <Wrapper>
+    <S.Wrapper>
       <progress value={step * 50} max={100} />
       <span>{step < 3 && arr[step].question}</span>
-      <Form onSubmit={handleSubmit}>
+      <S.Form onSubmit={handleSubmit}>
         <input
           type="text"
           placeholder="답을 입력해주세요"
           value={text}
           onChange={handleChange}
         />
-        {confirm && <ConfirmText>다시 생각해보세요..</ConfirmText>}
+        {confirm && <S.ConfirmText>다시 생각해보세요..</S.ConfirmText>}
         <input type="button" value="다음" onClick={handleClick} />
-      </Form>
-    </Wrapper>
+      </S.Form>
+    </S.Wrapper>
   );
 }
 
 export default Steps;
-
-const ConfirmText = styled.span`
-  color: red;
-`;

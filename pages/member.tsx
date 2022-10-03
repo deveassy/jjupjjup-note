@@ -1,4 +1,3 @@
-import { Container } from "../styles/styles";
 import styled from "styled-components";
 
 const memberInfo = [
@@ -56,6 +55,8 @@ function Member() {
 }
 
 export default Member;
+
+const Container = styled.div``;
 
 const CardContainer = styled.div`
   display: grid;

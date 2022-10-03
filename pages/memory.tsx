@@ -1,4 +1,3 @@
-import { Container } from "../styles/styles";
 import { useState, useRef } from "react";
 import styled from "styled-components";
 
@@ -7,7 +6,7 @@ function Memory() {
   const [file, setFile] = useState();
 
   const handleUpload = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setFile(e.target.value);
+    // setFile(e.target.value);
   };
   return (
     <Container>
@@ -28,6 +27,8 @@ function Memory() {
 }
 
 export default Memory;
+
+const Container = styled.div``;
 
 const UploadButton = styled.label`
   padding: 5px 10px;

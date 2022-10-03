@@ -1,5 +1,4 @@
 import Link from "next/link";
-import { Container } from "../styles/styles";
 import styled from "styled-components";
 import { useEffect, useState } from "react";
 import MapComponent from "../components/map";
@@ -17,6 +16,8 @@ function MukPlace() {
 }
 
 export default MukPlace;
+
+const Container = styled.div``;
 
 const MapDiv = styled.div`
   width: 500px;
